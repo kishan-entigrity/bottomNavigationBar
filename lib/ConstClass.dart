@@ -11,6 +11,7 @@ class ConstClass {
   static int _selectedIndex = 0;
   static int selectedIndex = 0;
   static int arrCountState = 0;
+  static int selectedIndexN = 0;
 
   static int currentTab = 0;
   static Widget currentScreen;

@@ -2,7 +2,7 @@ import 'package:bottombar_custom/profile_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'HomeScreen.dart';
+import 'ConstClass.dart';
 
 class ProfileFargment extends StatefulWidget {
   // ProfileFargment(this.changeTab);
@@ -54,7 +54,11 @@ class _ProfileFragmentState extends State<ProfileFargment> {
   Future<bool> _onWillPop() {
     print('Have to redirect to home fragment');
     // HomeScreen._selectedIndex = 0;
-    HomeScreen().createState().changeTabMethod(0);
+    setState(() {
+      // HomeScreen().createState().changeTabMethod(0);
+      ConstClass.selectedIndexN = 0;
+      // HomeScreen().createState().changeTabPosition0();
+    });
     // widget.changeTab(0);
     /*setState(() {
       // ConstClass.selectedIndex = 0;

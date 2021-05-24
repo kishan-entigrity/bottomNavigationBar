@@ -1,3 +1,4 @@
+import 'package:bottombar_custom/ConstClass.dart';
 import 'package:bottombar_custom/home_fragment.dart';
 import 'package:bottombar_custom/login_fragment.dart';
 import 'package:bottombar_custom/profile_fragment.dart';
@@ -19,7 +20,8 @@ class _HomeScreenState extends State<HomeScreen> {
   GlobalKey globalKey = new GlobalKey(debugLabel: 'btm_app_bar');
 
   // static int _selectedIndex = 0;
-  static int selectedIndexN = 0;
+  // static int selectedIndexN = 0;
+  // int selectedIndexN = 0;
   static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions1 = <Widget>[
     // HomeFragment(changeTabPosition0, changeTabPosition1, changeTabPosition2, changeTabPosition3),
@@ -46,33 +48,35 @@ class _HomeScreenState extends State<HomeScreen> {
   ];*/
 
   void changeTabPosition0() {
+    print('changeTabPosition0 is called');
     setState(() {
-      selectedIndexN = 0;
+      ConstClass.selectedIndexN = 0;
     });
+    print('changeTabPosition0 is Executed');
   }
 
   void changeTabPosition1() {
     setState(() {
-      selectedIndexN = 1;
+      ConstClass.selectedIndexN = 1;
     });
   }
 
   void changeTabPosition2() {
     setState(() {
-      selectedIndexN = 2;
+      ConstClass.selectedIndexN = 2;
     });
   }
 
   void changeTabPosition3() {
     setState(() {
-      selectedIndexN = 3;
+      ConstClass.selectedIndexN = 3;
     });
   }
 
   void _onItemTapped(int index) {
     setState(() {
       // ConstClass.selectedIndex = index;
-      selectedIndexN = index;
+      ConstClass.selectedIndexN = index;
     });
   }
 
@@ -80,9 +84,9 @@ class _HomeScreenState extends State<HomeScreen> {
     print('changeTabMethod is called');
     setState(() {
       // ConstClass.selectedIndex = index;
-      selectedIndexN = index;
+      ConstClass.selectedIndexN = index;
     });
-    print('changeTabMethod is called : selectedIndexN : $selectedIndexN');
+    print('changeTabMethod is called : selectedIndexN : ${ConstClass.selectedIndexN}');
   }
 
   @override
@@ -90,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       // return GetBuilder<DashboardController>(
       body: Center(
-        child: _widgetOptions1.elementAt(selectedIndexN),
+        child: _widgetOptions1.elementAt(ConstClass.selectedIndexN),
       ),
       bottomNavigationBar: BottomNavigationBar(
         // backgroundColor: Colors.tealAccent,
@@ -116,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         // currentIndex: _selectedIndex,
         // currentIndex: ConstClass.selectedIndex,
-        currentIndex: selectedIndexN,
+        currentIndex: ConstClass.selectedIndexN,
         selectedItemColor: Colors.amber[800],
         // onTap: _onItemTapped,
         onTap: changeTabMethod,
