@@ -1,8 +1,7 @@
 import 'dart:async';
 
+import 'package:bottombar_custom/HomeScreenTest.dart';
 import 'package:flutter/material.dart';
-
-import 'HomeScreen.dart';
 
 StreamController<int> streamController = StreamController<int>();
 
@@ -20,7 +19,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
-      home: HomeScreen(),
+      // home: HomeScreen(),
+      home: HomeScreenTest(),
       // home: HomeScreenNew(),
       // home: HomeScreenNew(streamController.stream),
     );

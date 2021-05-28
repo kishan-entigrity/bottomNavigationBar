@@ -2,16 +2,16 @@ import 'package:bottombar_custom/profile_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ProfileFargment extends StatefulWidget {
-  final void Function(int) onButtonPressed;
-  const ProfileFargment({Key key, this.onButtonPressed});
+import 'HomeScreen.dart';
+
+class ProfileFargmentOld extends StatefulWidget {
   // ProfileFargment(this.changeTab);
   // Function(int) changeTab;
   @override
-  _ProfileFragmentState createState() => _ProfileFragmentState();
+  _ProfileFragmentOldState createState() => _ProfileFragmentOldState();
 }
 
-class _ProfileFragmentState extends State<ProfileFargment> {
+class _ProfileFragmentOldState extends State<ProfileFargmentOld> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,8 +55,7 @@ class _ProfileFragmentState extends State<ProfileFargment> {
     print('Have to redirect to home fragment');
     // HomeScreen._selectedIndex = 0;
     setState(() {
-      // HomeScreen().createState().changeTabMethod(0);
-      widget.onButtonPressed(0);
+      HomeScreen().createState().changeTabMethod(0);
       // ConstClass.selectedIndexN = 0;
       // HomeScreen().createState().changeTabPosition0();
     });

@@ -1,16 +1,97 @@
-import 'package:bottombar_custom/home_fragment.dart';
-import 'package:bottombar_custom/login_fragment.dart';
 import 'package:bottombar_custom/profile_fragment.dart';
 import 'package:bottombar_custom/signup_fragment.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
+import 'home_fragment.dart';
+import 'login_fragment.dart';
+
+class HomeScreenTest extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomeScreenTestState createState() => _HomeScreenTestState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenTestState extends State<HomeScreenTest> {
+  final PageStorageBucket bucket = PageStorageBucket();
+
+  //       Widget currentScreen = HomeFragment();
+  int currentTab = 0;
+
+  static int selectedIndexN = 0;
+  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
+  Widget _widgetOptions1(int index) {
+    switch (index) {
+      case 0:
+        return HomeFragment();
+      case 1:
+        return LoginFargment();
+      case 2:
+        return SignUpFargment();
+      case 3:
+        return ProfileFargment(onButtonPressed: changeTabMethod);
+      default:
+        return Container();
+    }
+  }
+
+  /*List<Widget> _widgetOptions2 = <Widget>[
+    // HomeFragment(changeTabPosition0, changeTabPosition1, changeTabPosition2, changeTabPosition3),
+    HomeFragment(),
+    LoginFargment(),
+    SignUpFargment(),
+    // ProfileFargment((){changeTabMethod(0)}),
+    ProfileFargment(onButtonPressed: changeTabMethod),
+  ];*/
+
+  void changeTabMethod(int index) {
+    print('changeTabMethod is called');
+    setState(() {
+      selectedIndexN = index;
+    });
+    print('changeTabMethod is called : selectedIndexN : $selectedIndexN');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // return GetBuilder<DashboardController>(
+      body: Center(
+        child: _widgetOptions1(selectedIndexN),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: selectedIndexN,
+        onTap: changeTabMethod,
+        selectedItemColor: Colors.amber[800],
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Login',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'SignUp',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'Profile',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/*class HomeScreenTest extends StatefulWidget {
+  @override
+  _HomeScreenTestState createState() => _HomeScreenTestState();
+}
+
+class _HomeScreenTestState extends State<HomeScreenTest> {
   final PageStorageBucket bucket = PageStorageBucket();
 
   // Widget currentScreen = HomeFragment(changeTabPosition0, changeTabPosition1, changeTabPosition2, changeTabPosition3);
@@ -22,16 +103,32 @@ class _HomeScreenState extends State<HomeScreen> {
   // static int selectedIndexN = 0;
   int selectedIndexN = 0;
   static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
+  Widget _widgetOptions2(int index) {
+    switch (index) {
+      case 0:
+        return ProfileFargment(onButtonPressed: changeTabMethod);
+
+      case 1:
+        return Container(child: Text("Page - 2 "));
+
+      case 2:
+        return Container(child: Text("Page - 3 "));
+      default:
+        return Container();
+    }
+  }
+
   List<Widget> _widgetOptions1 = <Widget>[
     // HomeFragment(changeTabPosition0, changeTabPosition1, changeTabPosition2, changeTabPosition3),
     HomeFragment(),
     LoginFargment(),
     SignUpFargment(),
     // ProfileFargment((){changeTabMethod(0)}),
-    ProfileFargment(),
+    ProfileFargment(onButtonPressed: changeTabMethod),
   ];
 
-  /*static const List<Widget> _widgetOptions = <Widget>[
+  */ /*static const List<Widget> _widgetOptions = <Widget>[
     Text(
       'Index 0: Home',
       style: optionStyle,
@@ -44,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'Index 2: School',
       style: optionStyle,
     ),
-  ];*/
+  ];*/ /*
 
   void changeTabPosition0() {
     print('changeTabPosition0 is called');
@@ -135,4 +232,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-}
+}*/
